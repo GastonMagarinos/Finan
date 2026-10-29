@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Transacciones · Finan</title>
+  <script>document.documentElement.dataset.theme=(()=>{const t=localStorage.getItem("finan:tema")??"system";return t==="dark"||(t==="system"&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light"})()</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="css/main.css">
+  <script type="module" src="js/pages/transacciones.js"></script>
+  <script type="speculationrules">{"prefetch":[{"where":{"href_matches":"/*.html"},"eagerness":"moderate"}]}</script>
+</head>
+<body>
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+  <div class="app">
+    <aside class="sidebar">
+      <a class="brand" href="index.html">F<span class="brand__resto">inan</span><span class="brand__punto">.</span></a>
+      <nav aria-label="Principal"><ul class="nav"><li><a class="nav__link" href="index.html"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg><span class="nav__label">Dashboard</span></a></li><li><a class="nav__link" href="cuentas.html"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18v14H3zM3 10h18M16 15h2"/></svg><span class="nav__label">Cuentas</span></a></li><li><a class="nav__link" href="presupuestos.html"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v9h9M20.5 15A9 9 0 1 1 9 3.5"/></svg><span class="nav__label">Presupuestos</span></a></li><li><a class="nav__link" href="transacciones.html" aria-current="page"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg><span class="nav__label">Transacciones</span></a></li></ul></nav>
+      <div class="user"><a class="avatar" href="perfil.html" aria-label="Mi perfil" data-avatar-inicial></a></div>
+    </aside>
+    <header class="topbar">
+      <a class="brand" href="index.html">F<span class="brand__resto">inan</span><span class="brand__punto">.</span></a>
+      <div><button class="btn btn--primary btn--icon" type="button" data-abrir-movimiento aria-label="Nuevo movimiento">+</button><a class="avatar" href="perfil.html" aria-label="Mi perfil" data-avatar-inicial></a></div>
+    </header>
+    <main class="main" id="contenido">
+      <header class="page-head">
+        <div><h1>Transacciones</h1><p class="muted">Todos tus movimientos</p></div>
+        <button class="btn btn--primary btn--desde-768" type="button" data-abrir-movimiento>+ Nuevo movimiento</button>
+      </header>      <p class="form-error" role="status" data-error hidden></p>
+      <div class="tabs" role="group" aria-label="Período" data-periodos></div>
+      <form class="form filtros" data-filtros aria-label="Filtros">
+        <fieldset class="field"><legend class="visually-hidden">Tipo</legend>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="tipo" value="" checked><span>Todas</span></label>
+            <label class="chip"><input type="radio" name="tipo" value="gasto"><span>Gastos</span></label>
+            <label class="chip"><input type="radio" name="tipo" value="ingreso"><span>Ingresos</span></label>
+          </div>
+        </fieldset>
+        <label class="field">Cuenta<select name="cuenta_id"><option value="">Todas</option></select></label>
+        <label class="field">Categoría<select name="categoria_id"><option value="">Todas</option></select></label>
+      </form>
+      <section class="stats stats--3" aria-label="Resumen del período">
+        <article class="card"><h2 class="label">Ingresos</h2><p class="num pos" data-ingresos>—</p></article>
+        <article class="card"><h2 class="label">Gastos</h2><p class="num neg" data-gastos>—</p></article>
+        <article class="card"><h2 class="label">Balance</h2><p class="num" data-balance>—</p></article>
+      </section>
+      <section class="card" aria-label="Lista de movimientos" data-grupos></section>
+    </main>
+  </div>
+  <nav class="bottom-nav" aria-label="Principal"><ul class="nav"><li><a class="nav__link" href="index.html"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg><span class="nav__label">Dashboard</span></a></li><li><a class="nav__link" href="cuentas.html"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18v14H3zM3 10h18M16 15h2"/></svg><span class="nav__label">Cuentas</span></a></li><li><a class="nav__link" href="presupuestos.html"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v9h9M20.5 15A9 9 0 1 1 9 3.5"/></svg><span class="nav__label">Presupuestos</span></a></li><li><a class="nav__link" href="transacciones.html" aria-current="page"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg><span class="nav__label">Transacciones</span></a></li></ul></nav>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Acceso · Finan</title>
+  <script>document.documentElement.dataset.theme=(()=>{const t=localStorage.getItem("finan:tema")??"system";return t==="dark"||(t==="system"&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light"})()</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="css/main.css">
+  <script type="module" src="js/pages/acceso.js"></script>
+</head>
+<body>
+  <div class="auth">
+    <aside class="auth__brand" aria-hidden="true">
+      <a class="brand" href="acceso.html" tabindex="-1">Finan<span class="brand__punto">.</span></a>
+      <h2>Tus finanzas, claras y en un solo lugar.</h2>
+      <p>Registrá movimientos, controlá tus cuentas y seguí tus presupuestos mes a mes.</p>
+    </aside>
+    <main class="auth__panel" id="contenido">
+      <a class="brand" href="acceso.html">Finan<span class="brand__punto">.</span></a>
+      <div class="tabs" role="tablist" aria-label="Acceso">
+        <button role="tab" id="tab-ingreso" data-panel="ingreso" aria-controls="ingreso" aria-selected="true">Iniciar sesión</button>
+        <button role="tab" id="tab-registro" data-panel="registro" aria-controls="registro" aria-selected="false">Registrarse</button>
+      </div>
+      <section id="ingreso" role="tabpanel" aria-labelledby="tab-ingreso">
+        <h1>Iniciá sesión</h1><p class="muted">Ingresá con tu usuario o tu correo.</p>
+        <form class="form" data-form-login style="margin-top:1rem">
+          <label class="field">Usuario o correo electrónico<input name="identificador" autocomplete="username" required></label>
+          <label class="field">Contraseña<input name="password" type="password" autocomplete="current-password" required></label>
+          <p class="form-error" role="alert" hidden></p>
+          <button class="btn btn--primary btn--block" type="submit">Iniciar sesión</button>
+          <p class="muted">¿No tenés cuenta? <a href="#registro" data-ir="registro">Registrate</a></p>
+        </form>
+      </section>
+      <section id="registro" role="tabpanel" aria-labelledby="tab-registro" hidden>
+        <h1>Creá tu cuenta</h1><p class="muted">Empezá a ordenar tus finanzas.</p>
+        <form class="form" data-form-registro style="margin-top:1rem">
+          <div class="cols"><label class="field">Nombre<input name="nombre" autocomplete="given-name" required></label><label class="field">Apellido<input name="apellido" autocomplete="family-name" required></label></div>
+          <label class="field">Nombre de usuario<input name="username" autocomplete="username" required minlength="3"></label>
+          <label class="field">Correo electrónico<input name="email" type="email" autocomplete="email" required></label>
+          <div class="cols"><label class="field">Contraseña<input name="password" type="password" autocomplete="new-password" minlength="8" required></label><label class="field">Repetir contraseña<input name="repetir" type="password" autocomplete="new-password" required></label></div>
+          <label class="chip"><input type="checkbox" name="terminos" required><span>Acepto los términos y la política de privacidad</span></label>
+          <p class="form-error" role="alert" hidden></p>
+          <button class="btn btn--primary btn--block" type="submit">Crear cuenta</button>
+          <p class="muted">¿Ya tenés cuenta? <a href="#ingreso" data-ir="ingreso">Iniciá sesión</a></p>
+        </form>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

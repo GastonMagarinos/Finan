@@ -1,3 +1,0 @@
-# Finan
-Finanzas Personales
-Proximamente
