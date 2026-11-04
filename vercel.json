@@ -1,0 +1,5 @@
+{
+  "buildCommand": "node scripts/build-public.mjs",
+  "outputDirectory": "public",
+  "rewrites": [{ "source": "/api/(.*)", "destination": "/api" }]
+}

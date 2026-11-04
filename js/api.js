@@ -18,7 +18,7 @@ export class ApiError extends Error {
 
 async function request(ruta, { method = "GET", body, params } = {}) {
   if (USE_MOCK) return (await import("./mock.js")).mockRequest(method, ruta, { params, body });
-  const url = new URL(API_BASE + ruta);
+  const url = new URL(API_BASE + ruta, location.origin); // origin para que funcione con API_BASE relativo ("/api")
   for (const [k, v] of Object.entries(params ?? {})) if (v != null && v !== "") url.searchParams.set(k, v);
   const res = await fetch(url, {
     method, credentials: "include",

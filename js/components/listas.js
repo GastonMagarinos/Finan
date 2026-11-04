@@ -22,7 +22,7 @@ export function renderPresupuestos(ul, lista) {
       h("span", { class: "row__nombre" }, p.categoria),
       h("span", { class: "row__monto num", ...(pct >= 90 && { class: "row__monto num neg" }) }, `${pct}%`),
       h("span", { class: "row__sub num" }, `${money(p.gastado)} de ${money(p.limite)} · quedan ${money(Math.max(p.limite - p.gastado, 0))}`),
-      h("div", { class: "progress", style: `--v:${Math.min(pct, 100)}%;--c:${colorCategoria(p.categoria)}`, ...(pct >= 90 && { "data-alerta": "" }), role: "progressbar", "aria-valuenow": pct, "aria-valuemin": 0, "aria-valuemax": 100, "aria-label": `Presupuesto de ${p.categoria}` }, h("i"))));
+      h("div", { class: "progress", style: `--v:${Math.min(pct, 100)}%;--c:${colorCategoria(p.categoria)}`, ...(pct >= 90 && { "data-alerta": "" }), role: "progressbar", "aria-valuenow": Math.min(pct, 100), "aria-valuemin": 0, "aria-valuemax": 100, "aria-label": `Presupuesto de ${p.categoria}` }, h("i"))));
   }));
 }
 
