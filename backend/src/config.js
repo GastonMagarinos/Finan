@@ -1,7 +1,7 @@
 import { fileURLToPath } from "node:url";
 import dotenv from "dotenv";
 
-dotenv.config({ path: fileURLToPath(new URL("../.env", import.meta.url)) }); // backend/.env (en Vercel no existe: se usan sus variables)
+dotenv.config({ path: fileURLToPath(new URL("../.env", import.meta.url)), quiet: true }); // backend/.env (en Vercel no existe: se usan sus variables)
 
 const exigir = (clave) => {
   const v = process.env[clave];
