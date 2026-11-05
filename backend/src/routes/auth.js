@@ -16,7 +16,7 @@ export const datosUsuario = z.object({
   email: z.string().trim().toLowerCase().email("Correo inválido.").max(50, "Máximo 50 caracteres."),
 });
 
-const limitarLogin = rateLimit({ windowMs: 15 * 60 * 1000, limit: 10, standardHeaders: true, legacyHeaders: false, message: { mensaje: "Demasiados intentos. Probá de nuevo en unos minutos." } });
+const limitarLogin = rateLimit({ windowMs: 15 * 60 * 1000, limit: 10, skipSuccessfulRequests: true,standardHeaders: true, legacyHeaders: false, message: { mensaje: "Demasiados intentos. Probá de nuevo en unos minutos." } });
 const HASH_FALSO = bcrypt.hashSync("usuario-inexistente", 12); // para que tardar igual exista o no el usuario
 
 export const router = Router();
